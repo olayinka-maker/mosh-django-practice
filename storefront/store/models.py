@@ -72,10 +72,12 @@ class Address(models.Model):
     zip = models.CharField(max_length=20, default="0000")
 
 
+# collection model
 class Collection(models.Model):
     title = models.CharField(max_length=255)
 
 
+# order model
 class OrderItem(models.Model):
     order = models.ForeignKey(Customer, on_delete=models.PROTECT)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
@@ -83,10 +85,12 @@ class OrderItem(models.Model):
     unit_price = models.DecimalField(decimal_places=2, max_digits=6)
 
 
+# cart model
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+# cartitem model
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
